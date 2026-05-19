@@ -2,12 +2,15 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 import joblib
+import os
 from emission_calculator import EmissionsCalculator
 from google_maps_service import GoogleMapsService
 
 class RoutePlanner:
-    def __init__(self, api_key="AIzaSyBTCA9FrUufR3ZdZOxS1FTe_eJwkG6NDwU"):
+    def __init__(self, api_key=None):
         """Initialize the route planner with the emissions calculator and Google Maps service"""
+        if api_key is None:
+            api_key = os.getenv('GOOGLE_MAPS_API_KEY')
         self.emissions_calculator = EmissionsCalculator()
         self.maps_service = GoogleMapsService(api_key)
         print("Route Planner initialized successfully")
