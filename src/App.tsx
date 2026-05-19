@@ -18,7 +18,7 @@ const queryClient = new QueryClient();
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   useEffect(() => {
-    const user = localStorage.getItem('ecoKidsUser') || localStorage.getItem('carbonCompanionUser');
+    const user = localStorage.getItem('edoEducatorUser') || localStorage.getItem('ecoKidsUser') || localStorage.getItem('carbonCompanionUser');
     setIsAuthenticated(!!user);
   }, []);
   if (isAuthenticated === null) return null;

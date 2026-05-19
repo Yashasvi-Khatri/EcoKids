@@ -28,7 +28,7 @@ const MyAccount = () => {
 
   useEffect(() => {
     // Check for logged in user
-    const storedUser = localStorage.getItem('ecoKidsUser');
+    const storedUser = localStorage.getItem('edoEducatorUser') || localStorage.getItem('ecoKidsUser');
     
     if (!storedUser) {
       navigate('/login');
@@ -42,7 +42,7 @@ const MyAccount = () => {
   }, [navigate]);
 
   const handleLogout = async () => {
-    localStorage.removeItem('ecoKidsUser');
+    localStorage.removeItem('edoEducatorUser');
     toast({
       title: 'Logged out',
       description: 'You have been logged out successfully.',

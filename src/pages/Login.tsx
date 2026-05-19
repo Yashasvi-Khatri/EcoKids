@@ -48,7 +48,7 @@ const Login = () => {
         await setDoc(doc(db, 'users', userCredential.user.uid), userData);
       }
       
-      localStorage.setItem('ecoKidsUser', JSON.stringify(userData));
+      localStorage.setItem('edoEducatorUser', JSON.stringify(userData));
       toast({ title: '🌿 Welcome back!', description: `Great to see you, ${userData.name}!` });
       navigate(userData.role === 'teacher' ? '/teacher' : '/');
     } catch (error: any) {
@@ -83,7 +83,7 @@ const Login = () => {
         await setDoc(doc(db, 'users', userCredential.user.uid), userData);
       }
       
-      localStorage.setItem('ecoKidsUser', JSON.stringify(userData));
+      localStorage.setItem('edoEducatorUser', JSON.stringify(userData));
       toast({ title: '🌿 Welcome back!', description: `Great to see you, ${userData.name}!` });
       navigate(userData.role === 'teacher' ? '/teacher' : '/');
     } catch (error: any) {
@@ -98,7 +98,7 @@ const Login = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      localStorage.setItem('ecoKidsUser', JSON.stringify({
+      localStorage.setItem('edoEducatorUser', JSON.stringify({
         ...MOCK_USER,
         email: 'demo@ecokids.app',
         name: 'Eco Explorer',
@@ -108,7 +108,7 @@ const Login = () => {
         redeemedRewards: [],
         treesPlanted: 2,
       }));
-      toast({ title: '🌱 Demo mode!', description: 'Exploring EcoKids with sample data.' });
+      toast({ title: '🌱 Demo mode!', description: 'Exploring EDO Educator with sample data.' });
       navigate('/');
     }, 800);
   };
@@ -122,7 +122,7 @@ const Login = () => {
               <Sprout className="h-14 w-14 text-green-500" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold eco-gradient-text">EcoKids</h1>
+          <h1 className="text-4xl font-bold eco-gradient-text">EDO Educator</h1>
           <p className="text-gray-600 mt-2 text-lg">Learn. Act. Save the Planet 🌍</p>
         </div>
 

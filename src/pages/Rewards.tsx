@@ -33,7 +33,7 @@ const Rewards = () => {
 
   useEffect(() => {
     // Check for logged in user
-    const storedUser = localStorage.getItem('ecoKidsUser');
+    const storedUser = localStorage.getItem('edoEducatorUser') || localStorage.getItem('ecoKidsUser');
     
     if (!storedUser) {
       navigate('/login');

@@ -64,7 +64,7 @@ const Index = () => {
   });
 
   useEffect(() => {
-    const stored = localStorage.getItem('ecoKidsUser') || localStorage.getItem('carbonCompanionUser');
+    const stored = localStorage.getItem('edoEducatorUser') || localStorage.getItem('ecoKidsUser') || localStorage.getItem('carbonCompanionUser');
     if (stored) {
       const u = JSON.parse(stored);
       if (!u.redeemedRewards) u.redeemedRewards = [];
@@ -95,7 +95,7 @@ const Index = () => {
 
   const saveUser = (updated: ExtendedUserProfile) => {
     setUser(updated);
-    localStorage.setItem('ecoKidsUser', JSON.stringify(updated));
+    localStorage.setItem('edoEducatorUser', JSON.stringify(updated));
   };
 
   const handleAddActivity = (activity: CarbonActivity) => setActivities(prev => [activity, ...prev]);
