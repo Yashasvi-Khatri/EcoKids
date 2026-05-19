@@ -32,17 +32,89 @@
 ## Setup
 
 ```bash
+# Install dependencies
 npm install
+
+# Copy environment variables template
+cp .env.example .env
+
+# Add your API keys to .env file
+# See Environment Variables section below
+
+# Run development server
 npm run dev
 ```
 
-### API Keys (replace in source before deploying)
-- `src/firebase.ts` — Firebase config
-- `src/pages/RouteCalculator.tsx:13` — Google Maps API key
-- `src/components/EcoHabitChatbot.tsx` — Gemini API key
+### Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Firebase Configuration
+VITE_FIREBASE_API_KEY=your_firebase_api_key_here
+VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain_here
+VITE_FIREBASE_PROJECT_ID=your_firebase_project_id_here
+VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket_here
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id_here
+VITE_FIREBASE_APP_ID=your_firebase_app_id_here
+
+# Google Maps API Key
+VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+
+# Gemini API Key
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+**Note:** The `.env` file is excluded from Git for security. Use `.env.example` as a template.
+
+### Firebase Setup
+
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Create a new project or use existing one
+3. Enable **Authentication** → **Email/Password** sign-in method
+4. Create a **Firestore Database** with the following rules:
+   ```javascript
+   rules_version = '2';
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /users/{userId} {
+         allow read, write: if request.auth != null && request.auth.uid == userId;
+       }
+     }
+   }
+   ```
+5. Copy your Firebase config to `.env` file
 
 ## Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import project in [Vercel](https://vercel.com)
+3. Add environment variables in Vercel dashboard:
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+   - `VITE_GOOGLE_MAPS_API_KEY`
+   - `VITE_GEMINI_API_KEY`
+4. Deploy
+
+### Manual Build
+
 ```bash
 npm run build
-# Deploy dist/ to Vercel, Netlify, or Firebase Hosting
+# Deploy dist/ to any static hosting service
+```
+
+### Firebase Hosting
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init hosting
+firebase deploy
 ```
