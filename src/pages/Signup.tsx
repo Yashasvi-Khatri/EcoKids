@@ -51,9 +51,9 @@ const Signup = () => {
       };
 
       await setDoc(doc(db, 'users', userCredential.user.uid), userData);
-      localStorage.setItem('edoEducatorUser', JSON.stringify(userData));
+      localStorage.setItem('ecoEducatorUser', JSON.stringify(userData));
       
-      toast({ title: '🌱 Account created!', description: `Welcome to EDO Educator, ${name}! You earned 50 welcome points.` });
+      toast({ title: '🌱 Account created!', description: `Welcome to Eco Educator, ${name}! You earned 50 welcome points.` });
       navigate(role === 'teacher' ? '/teacher' : '/');
     } catch (error: any) {
       console.error('Signup error:', error);
@@ -81,9 +81,9 @@ const Signup = () => {
       };
 
       await setDoc(doc(db, 'users', userCredential.user.uid), userData);
-      localStorage.setItem('edoEducatorUser', JSON.stringify(userData));
+      localStorage.setItem('ecoEducatorUser', JSON.stringify(userData));
       
-      toast({ title: '🌱 Account created!', description: `Welcome to EDO Educator, ${userData.name}!` });
+      toast({ title: '🌱 Account created!', description: `Welcome to Eco Educator, ${userData.name}!` });
       navigate('/');
     } catch (error: any) {
       console.error('Google signup error:', error);
@@ -102,7 +102,7 @@ const Signup = () => {
               <Sprout className="h-14 w-14 text-green-500" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold eco-gradient-text">EDO Educator</h1>
+          <h1 className="text-4xl font-bold eco-gradient-text">Eco Educator</h1>
           <p className="text-gray-600 mt-2 text-lg">Join thousands of young planet heroes! 🌍</p>
         </div>
 
@@ -154,7 +154,7 @@ const Signup = () => {
                 </div>
               )}
               <Button type="submit" className="w-full text-lg py-5 rounded-xl" disabled={isLoading}>
-                {isLoading ? 'Creating account...' : '🌱 Join EDO Educator!'}
+                {isLoading ? 'Creating account...' : '🌱 Join Eco Educator!'}
               </Button>
               <Button type="button" variant="outline" className="w-full text-lg py-5 rounded-xl" onClick={handleGoogleSignup} disabled={isLoading}>
                 {isLoading ? 'Creating account...' : 'Continue with Google'}

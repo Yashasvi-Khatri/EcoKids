@@ -30,7 +30,7 @@ const TeacherDashboard = () => {
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem('edoEducatorUser') || localStorage.getItem('ecoKidsUser');
+    const stored = localStorage.getItem('ecoEducatorUser') || localStorage.getItem('edoEducatorUser') || localStorage.getItem('ecoKidsUser');
     if (!stored) { navigate('/login'); return; }
     const u = JSON.parse(stored);
     if (u.role !== 'teacher') { navigate('/'); return; }

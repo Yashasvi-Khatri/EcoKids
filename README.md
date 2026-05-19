@@ -1,4 +1,4 @@
-# EDO Educator 🌍
+# Eco Educator 🌍
 
 > **Edtech app for young planet heroes** — helping school children learn about the environment, track eco habits, and earn rewards.
 
